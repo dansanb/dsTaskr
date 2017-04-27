@@ -10,4 +10,9 @@ class TaskList extends Model
     {
         return $this->hasMany('dsTaskr\Task');
     }
+
+    public function tasksPending()
+    {
+    	return $this->tasks()->where('completed', '=', 0);
+    }
 }

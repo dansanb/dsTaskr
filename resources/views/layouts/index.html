@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>dsTaskr App</title>
+    <title>Logo Nav - Start Bootstrap Template</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -47,10 +47,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/">About</a>
+                        <a href="#">About</a>
                     </li>
                     <li>
-                        <a href="/task-lists">My Task Lists</a>
+                        <a href="#">Services</a>
                     </li>
                     <li>
                         <a href="#">Contact</a>
@@ -64,35 +64,17 @@
 
     <!-- Page Content -->
     <div class="container">
-    	<div class="row">
-    		<div class="col-lg-12">
-				@if ( session('message'))
-				<div class="flash-message">
-					{!! session('message') !!}
-				</div>
-				@endif
-    		</div>
-    	</div>
-
         <div class="row">
             <div class="col-lg-12">
-				@yield('content')
+                <h1>Logo Nav by Start Bootstrap</h1>
+                <p>Note: You may need to adjust some CSS based on the size of your logo. The default logo size is 150x50 pixels.</p>
             </div>
         </div>
     </div>
     <!-- /.container -->
 
     <!-- jQuery -->
-    <script
-		  src="https://code.jquery.com/jquery-3.2.1.min.js"
-		  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		  crossorigin="anonymous"></script>
-
-		 <script>
-    		$(".delete").on("submit", function(){
-        		return confirm("Are you sure you want to delete?");
-    		});
-		</script>
+    <script src="js/jquery.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>

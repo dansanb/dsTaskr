@@ -1,14 +1,26 @@
 @extends('layouts.master')
 
 @section('content')
-<h2>Task Lists:</h2>
 
-<a href="/task-lists/create">New List</a>
+<h2>My Task Lists</h2>
 
-<ul class="task-lists">
-	@foreach ($taskLists as $taskList)
-		<li><a href="/task-lists/{{ $taskList['id'] }}">{{ $taskList['list_name'] }}</a></li>
-	@endforeach
-</ul>
+<a class="btn btn-primary" href="/task-lists/create">New List</a>
+
+<table class="table">
+	<thead>
+    	<tr>
+      		<th>Name</th>
+      		<th>Pending Tasks</th>
+    	</tr>
+  	</thead>
+	<tbody>
+    	@foreach ($taskLists as $taskList)
+    	<tr>
+		    <td><a href="/task-lists/{{ $taskList['id'] }}">{{ $taskList['list_name'] }}</a></td>
+      		<td>{{ $taskList->tasksPending()->get()->count() }}</td>
+    	</tr>
+    	@endforeach
+	</tbody>
+</table>
 
 @endsection
