@@ -68,7 +68,7 @@
     	<div class="row">
     		<div class="col-lg-12">
 				@if ( session('message'))
-				<div class="flash-message">
+				<div class="alert alert-info">
 					{!! session('message') !!}
 				</div>
 				@endif

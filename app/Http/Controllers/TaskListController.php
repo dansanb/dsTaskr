@@ -52,7 +52,7 @@ class TaskListController extends Controller
         $taskList->list_name = $request->input('list_name');
         $taskList->save();
 
-        return Redirect::route('task-lists.index')->with('message', 'A new task list has been created!');
+        return Redirect::route('task-lists.index')->with('message', 'A new task list has been created');
 
     }
 
@@ -80,7 +80,9 @@ class TaskListController extends Controller
      */
     public function edit($id)
     {
-        //
+        $taskList = TaskList::find($id);
+
+        return (View::make('task-list.add-or-edit', ['taskList' => $taskList]));
     }
 
     /**
@@ -92,7 +94,15 @@ class TaskListController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'list_name' => 'required|min:2'
+        ]);
+
+        $taskList = TaskList::findOrFail($id);
+        $taskList->update( $request->all() );
+        $taskList->save();
+
+        return Redirect::route('task-lists.index')->with('message', 'Task list has been updated');
     }
 
     /**
