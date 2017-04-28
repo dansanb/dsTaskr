@@ -13,9 +13,9 @@
 <table class="table">
 	<thead>
     	<tr>
-      		<th class="col-md-8">Name</th>
-      		<th class="col-md-2 text-center">Pending Tasks</th>
-      		<th class="col-md-4 text-center">Actions</th>
+      		<th class="col-md-8 col-xs-6">Name</th>
+      		<th class="col-md-2 col-xs-2 text-center">Pending Tasks</th>
+      		<th class="col-md-2 col-xs-4 text-center"></th>
     	</tr>
   	</thead>
 	<tbody>
