@@ -10,7 +10,7 @@ class TaskList extends Model
 
     public function tasks()
     {
-        return $this->hasMany('dsTaskr\Task');
+        return $this->hasMany('dsTaskr\Task')->orderBy('completed', 'asc');
     }
 
     public function tasksPending()

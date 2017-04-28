@@ -61,10 +61,14 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        
-        // get all tasks that belong to this list
-        $taskList = TaskList::with('tasks')->find($id);
+        // instead of showing the task, this will be used to actually set the completion status.
+        $task = TaskList::with('tasks')->findOrFail($id);
 
+        // set to completed
+        $task->completed = true;
+        $task->save();
+
+        // return to task list 
         return (View::make('task-list.show', ['taskList' => $taskList]));
 
     }

@@ -14,15 +14,21 @@
 	<thead>
     	<tr>
       		<th class="col-md-10 col-sm-9">Task</th>
-      		<th class="col-md-2 col-sm-3 hidden-xs">Completed</th>
+      		<th class="col-md-2 col-sm-3 hidden-xs text-center">Completed</th>
 		</tr>
   	</thead>
 	<tbody>
 		@foreach ($taskList['tasks'] as $task)
-    	<tr>
-    		<td>{{ $task['task_name'] }}</td>
-		    <td class="hidden-xs">12/3/2017 12:33 am</td>
-    	</tr>
+			@if ($task->completed)
+    		<tr class=" text-muted success">
+    			<td><em>{{ $task['task_name'] }}</em></td>
+		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td>    			
+    		@else
+    		<tr>
+    			<td><a href="">{{ $task['task_name'] }}</td>
+		    	<td class="hidden-xs text-center">-</td>    			
+    		@endif
+    		</tr>
     	@endforeach
 	</tbody>
 </table>
