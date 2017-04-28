@@ -4,20 +4,31 @@
 
 <h2>My Task Lists</h2>
 
-<a class="btn btn-primary" href="/task-lists/create">New List</a>
+<div class="row">
+	<div class="col-md-12">
+		<a class="btn btn-primary" href="/task-lists/create">New List</a>
+	</div>
+</div>
 
 <table class="table">
 	<thead>
     	<tr>
-      		<th>Name</th>
-      		<th>Pending Tasks</th>
+      		<th class="col-md-8">Name</th>
+      		<th class="col-md-2 text-center">Pending Tasks</th>
+      		<th class="col-md-4 text-center">Actions</th>
     	</tr>
   	</thead>
 	<tbody>
     	@foreach ($taskLists as $taskList)
     	<tr>
 		    <td><a href="/task-lists/{{ $taskList['id'] }}">{{ $taskList['list_name'] }}</a></td>
-      		<td>{{ $taskList->tasksPending()->get()->count() }}</td>
+      		<td class="text-center">{{ $taskList->tasksPending()->count() }}</td>
+      		<td class="text-center">
+				{{ Form::open( ['route' => ['task-lists.destroy', $taskList['id'] ], 'method' => 'delete', 'class' => 'delete form-inline'] ) }}
+					<a href="{{ route ('task-lists.edit', array('id' => $taskList['id'])) }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
+	    			<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+				{{ Form::close() }}
+      		</td>
     	</tr>
     	@endforeach
 	</tbody>
