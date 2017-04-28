@@ -1,6 +1,11 @@
 @extends('layouts.master')
 
 @section('content')
-<h2>Welcome to dsTaskr!</h2>
-<p>To get starget, go to your task lists, and create a new list.</p>
+
+<div class="jumbotron">
+	<h1>Welcome to dsTaskr</h1>
+	<p>A multi-list, Todo web app that is easy to use. Create a task list to get started:</p>
+	<p><a class="btn btn-primary btn-lg" href="{{ route('task-lists.index') }}" role="button">My Task Lists</a></p>
+</div>
+
 @endsection

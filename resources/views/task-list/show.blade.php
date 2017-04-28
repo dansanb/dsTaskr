@@ -6,6 +6,8 @@
 
 <div class="row">
 	<div class="col-md-12">
+		<a class="btn btn-default" href="{{ route('task-lists.index') }}"><span class="glyphicon glyphicon-chevron-left"></span></a>
+		&nbsp;
 		<a class="btn btn-primary" href="{{ route('tasks.create', $taskList['id']) }} ">New Task</a>
 	</div>
 </div>
@@ -21,7 +23,7 @@
 		@foreach ($taskList['tasks'] as $task)
 			@if ($task->completed)
     		<tr class=" text-muted success">
-    			<td><em>{{ $task['task_name'] }}</em></td>
+    			<td><s><em>{{ $task['task_name'] }}</em></s></td>
 		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td>    			
     		@else
     		<tr>
