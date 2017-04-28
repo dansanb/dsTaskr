@@ -25,7 +25,7 @@
 		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td>    			
     		@else
     		<tr>
-    			<td><a href="">{{ $task['task_name'] }}</td>
+    			<td><a href="{{ route('tasks.show', $task->id) }}">{{ $task['task_name'] }}</td>
 		    	<td class="hidden-xs text-center">-</td>    			
     		@endif
     		</tr>

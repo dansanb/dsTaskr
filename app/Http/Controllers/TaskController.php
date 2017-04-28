@@ -62,14 +62,14 @@ class TaskController extends Controller
     public function show($id)
     {
         // instead of showing the task, this will be used to actually set the completion status.
-        $task = TaskList::with('tasks')->findOrFail($id);
+        $task = Task::findOrFail($id);
 
         // set to completed
         $task->completed = true;
         $task->save();
 
         // return to task list 
-        return (View::make('task-list.show', ['taskList' => $taskList]));
+        return Redirect::route('task-lists.show', $task->task_list_id)->with('message', 'The task has been marked as completed.');
 
     }
 
