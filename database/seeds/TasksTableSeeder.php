@@ -22,6 +22,7 @@ class TasksTableSeeder extends Seeder
 		    	Task::create([
 		    		'task_list_id' => $taskListID,
 		    		'task_name' => $faker->streetAddress,
+                    'completed' => $faker->boolean,
 		    	]);
 	    	}
 	    }

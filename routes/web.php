@@ -14,3 +14,7 @@
 Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
 
 Route::resource('task-lists', 'TaskListController');
+Route::get('tasks/create/{taskListId}', ['as' => 'tasks.create', 'uses' => 'TaskController@create'] );
+Route::resource('tasks', 'TaskController', ['except' => 'create'] );
+
+

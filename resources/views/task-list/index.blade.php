@@ -6,7 +6,7 @@
 
 <div class="row">
 	<div class="col-md-12">
-		<a class="btn btn-primary" href="/task-lists/create">New List</a>
+		<a class="btn btn-primary" href="{{ route('task-lists.create') }} ">New List</a>
 	</div>
 </div>
 
