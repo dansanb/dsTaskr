@@ -53,9 +53,6 @@
                     <li>
                         <a href="/task-lists">My Task Lists</a>
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
