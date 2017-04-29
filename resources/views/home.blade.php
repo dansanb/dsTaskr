@@ -6,7 +6,7 @@
 
 	@if(Auth::guest())
 		<h1>Welcome to dsTaskr</h1>
-		<p>A multi-list, Todo web app that is easy to use. Sign in or create a new account to get started.</p>
+		<p>A multi-list, Todo web app that is easy to use. Login or register to get started:</p>
 		<p>
 			<a class="btn btn-success btn-lg" href="{{ route('login') }}" role="button">Login</a>&nbsp;
 			<a class="btn btn-primary btn-lg" href="{{ route('register') }}" role="button">Register</a>
