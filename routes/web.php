@@ -12,7 +12,7 @@
 */
 
 // welcome page
-Route::get('/', array('as' => 'home', 'uses' => 'HomeController@showWelcome'));
+Route::get('/', array('as' => 'home', 'uses' => 'HomeController@index'));
 
 // 	task-lists resource:
 // 	index 	= displays lists
@@ -29,3 +29,4 @@ Route::get('tasks/create/{taskListId}', ['as' => 'tasks.create', 'uses' => 'Task
 Route::resource('tasks', 'TaskController', ['except' => 'create'] );
 
 
+Auth::routes();
