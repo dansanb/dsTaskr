@@ -13,19 +13,11 @@ use Redirect;
 
 class TaskController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-    }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a task in a list
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create($taskListId)
     {
@@ -33,35 +25,42 @@ class TaskController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a task
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
+        // validate the task requirements
         $this->validate($request, [
             'task_name' => 'required|min:2'
         ]);
 
+        // make sure task list id is valid - fail otherwise
+        $taskList = TaskList::findOrFail( $request->input('task_list_id') );
+
+        // create and save new task
         $task = new Task;
         $task->task_name = $request->input('task_name');
         $task->task_list_id = $request->input('task_list_id');
         $task->save();
 
+        // return to task list with message
         return Redirect::route('task-lists.show', $task->task_list_id)->with('message', 'A new task list has been created');
 
     }
 
     /**
-     * Display the specified resource.
+     * Set task completion status
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id of task to be completed
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function update(Request $request, $id)
     {
-        // instead of showing the task, this will be used to actually set the completion status.
+        // make sure task id valid, fail otherwise
         $task = Task::findOrFail($id);
 
         // set to completed
@@ -70,53 +69,6 @@ class TaskController extends Controller
 
         // return to task list 
         return Redirect::route('task-lists.show', $task->task_list_id)->with('message', 'The task has been marked as completed.');
-
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $taskList = TaskList::find($id);
-
-        return (View::make('task-list.add-or-edit', ['taskList' => $taskList]));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $this->validate($request, [
-            'task_name' => 'required|min:2'
-        ]);
-
-        $taskList = TaskList::findOrFail($id);
-        $taskList->update( $request->all() );
-        $taskList->save();
-
-        return Redirect::route('task-lists.index')->with('message', 'Task list has been updated');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        TaskList::find($id)->delete();
-
-        return Redirect::route('task-lists.index')->with('message', 'Task list has been deleted.');
- 
-    }
 }

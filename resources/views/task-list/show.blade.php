@@ -27,7 +27,13 @@
 		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td>    			
     		@else
     		<tr>
-    			<td><a href="{{ route('tasks.show', $task->id) }}">{{ $task['task_name'] }}</td>
+    			<td>
+
+    				{{ Form::open( ['route' => ['tasks.update', $task->id ], 'method' => 'put', 'class' => 'form-inline'] ) }}
+		    			<button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-ok"></span></button>
+						{{ $task['task_name'] }}
+					{{ Form::close() }}
+    			</td>
 		    	<td class="hidden-xs text-center">-</td>    			
     		@endif
     		</tr>

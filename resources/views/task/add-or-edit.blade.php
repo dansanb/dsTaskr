@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h2>New Task List</h2>
+<h2>New Task</h2>
 {{ Form::open( ['route' => 'tasks.store', 'class' => 'form'] ) }}
 
 @if (count($errors) > 0)

@@ -66,7 +66,7 @@ class TaskListController extends Controller
     {
         
         // get all tasks that belong to this list
-        $taskList = TaskList::with('tasks')->find($id);
+        $taskList = TaskList::with('tasks')->findOrFail($id);
 
         return (View::make('task-list.show', ['taskList' => $taskList]));
 
@@ -80,7 +80,7 @@ class TaskListController extends Controller
      */
     public function edit($id)
     {
-        $taskList = TaskList::find($id);
+        $taskList = TaskList::findOrFail($id);
 
         return (View::make('task-list.add-or-edit', ['taskList' => $taskList]));
     }
