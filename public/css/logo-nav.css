@@ -26,6 +26,21 @@ body {
   outline: none;
 }
 
+.row-margin {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.task-thumbnail {
+	height: 150px;
+}
+
+.sit-bottom {
+	position: absolute;
+	right: 30px;
+	bottom: 30px;
+}
+
 @media(min-width:768px) {
     body {
         padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */

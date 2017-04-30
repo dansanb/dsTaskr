@@ -10,28 +10,32 @@
 	</div>
 </div>
 
-<table class="table">
-	<thead>
-    	<tr>
-      		<th class="col-md-8 col-xs-6">Name</th>
-      		<th class="col-md-2 col-xs-2 text-center">Pending Tasks</th>
-      		<th class="col-md-2 col-xs-4 text-center"></th>
-    	</tr>
-  	</thead>
-	<tbody>
-    	@foreach ($taskLists as $taskList)
-    	<tr>
-		    <td><a href="/task-lists/{{ $taskList['id'] }}">{{ $taskList['list_name'] }}</a></td>
-      		<td class="text-center">{{ $taskList->tasksPending()->count() }}</td>
-      		<td class="text-center">
-				{{ Form::open( ['route' => ['task-lists.destroy', $taskList['id'] ], 'method' => 'delete', 'class' => 'delete form-inline'] ) }}
+
+<div class="row row-margin">
+
+	@foreach ($taskLists as $taskList)
+	<div class="col-lg-4 col-sm-6 col-xs-12">
+	    <div class="thumbnail task-thumbnail">
+			<div class="caption">
+		        <h4>{{ $taskList->list_name}}</h4>
+		        <div class="sit-bottom">
+		        	
+					{{ Form::open( ['route' => ['task-lists.destroy', $taskList['id'] ], 'method' => 'delete', 'class' => 'delete form-inline'] ) }}
+
+					<a href="{{ route('task-lists.show', $taskList->id) }}" class="btn btn-primary inline" type="button">
+  					Pending <span class="badge">{{ $taskList->tasksPending()->count() }}</span>
+					</a>
+
 					<a href="{{ route ('task-lists.edit', array('id' => $taskList['id'])) }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
 	    			<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
-				{{ Form::close() }}
-      		</td>
-    	</tr>
-    	@endforeach
-	</tbody>
-</table>
+					{{ Form::close() }}
+
+		         </div>
+			</div>
+		</div>
+	</div>
+	@endforeach
+</div>
+
 
 @endsection
