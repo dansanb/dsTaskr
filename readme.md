@@ -8,19 +8,19 @@ dsTaskr is a "todo" web application written in PHP and Laravel. This was a great
 
 ## Screenshots
 
-###Welcome Screen
+### Welcome Screen
 ![Alt text](/screenshots/dsTaskr-screenshot1.png?raw=true)
 
-###Login
+### Login
 ![Alt text](/screenshots/dsTaskr-screenshot2.png?raw=true)
 
-###Lists Screen
+### Lists Screen
 ![Alt text](/screenshots/dsTaskr-screenshot3.png?raw=true)
 
-###Tasks Screen
+### Tasks Screen
 ![Alt text](/screenshots/dsTaskr-screenshot4.png?raw=true)
 
-###New Task
+### New Task Screen 
 ![Alt text](/screenshots/dsTaskr-screenshot5.png?raw=true)
 
 
