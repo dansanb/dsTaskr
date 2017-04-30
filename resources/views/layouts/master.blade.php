@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img src="http://placehold.it/150x50&text=dsTaskr" alt="">
+                    <img src="{{ URL::asset('images/logo.png') }}" alt="dsTaskr Logo">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
