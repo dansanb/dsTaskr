@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="jumbotron">
-	<h1>Woops......</h1>
-	<p>The requested page was not found.</p>
+	<h1>That page doesn't exist.</h1>
+	<p>Your base are belong to us now...</p>
 </div>
 
 @endsection
