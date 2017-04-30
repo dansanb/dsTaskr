@@ -14,6 +14,16 @@ use Redirect;
 class TaskListController extends Controller
 {
     /**
+     * Constructor
+     *
+     */
+    public function __construct()
+    {
+        // require user authentication to use this controller.
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

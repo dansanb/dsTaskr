@@ -41,7 +41,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img src="http://placehold.it/150x50&text=Logo" alt="">
+                    <img src="http://placehold.it/150x50&text=dsTaskr" alt="">
                 </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -50,9 +50,11 @@
                     <li>
                         <a href="/">Welcome</a>
                     </li>
+                    @if (!Auth::guest())
                     <li>
                         <a href="/task-lists">My Task Lists</a>
                     </li>
+                    @endif
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -116,9 +118,21 @@
 		  crossorigin="anonymous"></script>
 
 		 <script>
+
+		 	// delete confirmation - ask before submitting delete request
     		$(".delete").on("submit", function(){
         		return confirm("Are you sure you want to delete?");
     		});
+
+
+    		// show / hide hidden row items
+    		$('#show-hide-completed').on('click', function($this) {
+    			$('.table tr.success').toggleClass('hidden');
+
+    			// toggle spans that describe the actions of the button (show/hide)
+    			$('#show-hide-completed span.toggle').toggleClass('hidden');
+    		});
+
 		</script>
 
     <!-- Bootstrap Core JavaScript -->

@@ -13,6 +13,15 @@ use Redirect;
 
 class TaskController extends Controller
 {
+    /**
+     * Constructor
+     *
+     */
+    public function __construct()
+    {
+        // require user authentication to use this controller.
+        $this->middleware('auth');
+    }
 
     /**
      * Create a task in a list
