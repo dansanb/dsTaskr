@@ -2,8 +2,13 @@
 
 @section('content')
 
-<h2>New Task</h2>
-{{ Form::open( ['route' => 'tasks.store', 'class' => 'form'] ) }}
+@if ( isset($task) )
+    <h2>Update Task</h2>
+    {{ Form::model( $task, ['route' => ['tasks.update', $task->id], 'class' => 'form', 'method' => 'PUT'] ) }}
+@else
+    <h2>New Task</h2>
+    {{ Form::open( ['route' => 'tasks.store', 'class' => 'form'] ) }}
+@endif
 
 @if (count($errors) > 0)
 <div class="alert alert-danger">

@@ -27,6 +27,7 @@
   	</thead>
 	<tbody>
 		@foreach ($taskList['tasks'] as $task)
+
 			@if ($task->completed)
     		<tr class=" text-muted success hidden">
     			<td>
@@ -34,19 +35,35 @@
 
 	    			<s><em>{{ $task['task_name'] }}</em></s>
     			</td>
-		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td>    			
+		    	<td class="hidden-xs text-center"><em>{{ $task->updated_at->toFormattedDateString() }}</em></td> 
+		    </tr>   			
     		@else
     		<tr>
     			<td>
 
     				{{ Form::open( ['route' => ['tasks.update', $task->id ], 'method' => 'put', 'class' => 'form-inline'] ) }}
+    					{{ Form::hidden('completed', true) }}
 		    			<button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span></button>
-						{{ $task['task_name'] }}
+						{{ $task->task_name }}
 					{{ Form::close() }}
     			</td>
-		    	<td class="hidden-xs text-center">-</td>    			
+		    	<td class="hidden-xs text-center">
+					{{ Form::open( ['route' => ['tasks.destroy', $task->id ], 'method' => 'delete', 'class' => 'delete form-inline'] ) }}
+						
+						<!-- edit list name button -->
+						<a href="{{ route ('tasks.edit', $task->id) }}" class="btn btn-primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
+
+						<!-- delete button -->
+		    			<button type="submit" class="btn btn-danger">
+			    			<span class="glyphicon glyphicon-trash"></span>
+		    			</button>
+		    			
+					{{ Form::close() }}
+		    	</td>   
+		    </tr> 			
     		@endif
-    		</tr>
     	@endforeach
 	</tbody>
 </table>

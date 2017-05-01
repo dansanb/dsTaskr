@@ -123,7 +123,7 @@ class TaskListController extends Controller
      */
     public function destroy($id)
     {
-        TaskList::find($id)->delete();
+        TaskList::findOrFail($id)->delete();
 
         return Redirect::route('task-lists.index')->with('message', 'Task list has been deleted.');
  

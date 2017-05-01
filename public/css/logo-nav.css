@@ -31,8 +31,11 @@ body {
 	margin-bottom: 20px;
 }
 
+.thumbnail {
+	background: #fffdef;
+}
 .task-thumbnail {
-	height: 150px;
+	height: 130px;
 }
 
 .sit-bottom {

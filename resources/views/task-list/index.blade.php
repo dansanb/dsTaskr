@@ -21,13 +21,22 @@
 		        <div class="sit-bottom">
 		        	
 					{{ Form::open( ['route' => ['task-lists.destroy', $taskList['id'] ], 'method' => 'delete', 'class' => 'delete form-inline'] ) }}
+						
+						<!-- view tasks button -->
+						<a href="{{ route('task-lists.show', $taskList->id) }}" class="btn btn-primary inline">
+		  					Pending <span class="badge">{{ $taskList->tasksPending()->count() }}</span>
+						</a>
 
-					<a href="{{ route('task-lists.show', $taskList->id) }}" class="btn btn-primary inline" type="button">
-  					Pending <span class="badge">{{ $taskList->tasksPending()->count() }}</span>
-					</a>
+						<!-- edit list name button -->
+						<a href="{{ route ('task-lists.edit', array('id' => $taskList['id'])) }}" class="btn btn-primary">
+							<span class="glyphicon glyphicon-pencil"></span>
+						</a>
 
-					<a href="{{ route ('task-lists.edit', array('id' => $taskList['id'])) }}" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></a>
-	    			<button type="submit" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+						<!-- delete button -->
+		    			<button type="submit" class="btn btn-danger">
+			    			<span class="glyphicon glyphicon-trash"></span>
+		    			</button>
+		    			
 					{{ Form::close() }}
 
 		         </div>
